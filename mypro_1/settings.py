@@ -16,6 +16,12 @@ from decouple import config
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+#cloudinary imports
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
@@ -37,6 +43,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'app1',
+
+    'cloudinary',
 ]
 
 MIDDLEWARE = [
@@ -120,3 +129,12 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#cloudinary - django integrations
+
+cloudinary.config(
+
+    cloud_name = config('cloud_name'),
+    api_key = config('api_key'),
+    api_secret = config('api_secret'),
+)
